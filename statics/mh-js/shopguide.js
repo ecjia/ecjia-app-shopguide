@@ -44,7 +44,7 @@
                             if (data.message == '') {
                                 ecjia.pjax(data.url);
                             } else {
-                                ecjia.admin.showmessage(data);
+                                ecjia.merchant.showmessage(data);
                             }
                         }
                     });

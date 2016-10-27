@@ -226,8 +226,8 @@ class merchant extends ecjia_merchant {
 
     		/* 记录日志 */
     		ecjia_merchant::admin_log($goods_name, 'add', 'goods');
-    		
-    		$this->showmessage(RC_Lang::get('shopguide::shopguide.complete'), ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_SUCCESS, array('pjaxurl' => RC_Uri::url('shopguide/merchant/init', array('step' => 3))));
+    		$links = array(array('text' => '仪表盘', 'href' => RC_Uri::url('merchant/dashboard/init')));
+    		$this->showmessage(RC_Lang::get('shopguide::shopguide.complete'), ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_SUCCESS, array('links' => $links, 'pjaxurl' => RC_Uri::url('shopguide/merchant/init', array('step' => 3))));
     	}
     }
     
