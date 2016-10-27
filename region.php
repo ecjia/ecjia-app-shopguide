@@ -1,0 +1,27 @@
+<?php
+/**
+ * ECJIA 地区切换程序
+ */
+defined('IN_ECJIA') or exit('No permission resources.');
+
+class region extends ecjia_admin {
+	public function __construct() {
+		parent::__construct();
+	}
+	
+	
+	public function init() {
+		$db_region 	= RC_Loader::load_model('region_model');
+		$type      	= !empty($_GET['type'])   ? intval($_GET['type'])   : 0;
+		$parent		= !empty($_GET['parent']) ? intval($_GET['parent']) : 0;
+		
+		$arr['regions'] = $db_region->get_regions($type, $parent);
+		$arr['type']    = $type;
+		$arr['target']  = !empty($_GET['target']) ? stripslashes(trim($_GET['target'])) : '';
+		$arr['target']  = htmlspecialchars($arr['target']);
+		
+		echo json_encode($arr);
+	}
+}
+
+// end
