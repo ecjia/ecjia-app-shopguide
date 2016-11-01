@@ -14,7 +14,7 @@ return array(
 	'next_step' 			=> 'Next',
 	'complete' 				=> 'Complete guide',
 	'shopguide' 			=> 'Shop wizard',
-	'shopguide_manage' 		=> 'Shop guide management',
+	'shopguide_setup' 		=> 'Shop guide setup',
 	'area_name_exist' 		=> 'Distribution area name already exists',
 	'brand_name_exist' 		=> 'The brand name already exists',
 	'cat_name_exist'		=> 'The Category name already exists',

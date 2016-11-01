@@ -14,7 +14,7 @@ return array(
 	'next_step'				=> '下一步',
 	'complete'				=> '完成向导',
 	'shopguide'				=> '开店向导',
-	'shopguide_manage'		=> '开店向导管理',
+	'shopguide_setup'		=> '开店向导设置',
 	'area_name_exist'		=> '该配送区域名称已存在',
 	'brand_name_exist'		=> '该品牌名称已存在',
 	'cat_name_exist'		=> '该商品分类名称已存在',

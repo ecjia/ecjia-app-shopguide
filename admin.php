@@ -60,7 +60,7 @@ class admin extends ecjia_admin {
 	}
 	
     public function init() {
-    	$this->admin_priv('shopguide_manage');
+    	$this->admin_priv('shopguide_setup');
     	
 		if (isset($_GET['step']) && $_GET['step'] > 1) {
 			ecjia_screen::get_current_screen()->add_nav_here(new admin_nav_here(RC_Lang::get('shopguide::shopguide.shopguide'), RC_Uri::url('shopguide/admin/init')));
@@ -95,7 +95,7 @@ class admin extends ecjia_admin {
     }
     
     public function step_post() {
-    	$this->admin_priv('shopguide_manage');
+    	$this->admin_priv('shopguide_setup');
     	
     	$step = !empty($_GET['step']) ? intval($_GET['step']) : 1;
     	if ($step == 1) {

@@ -38,7 +38,7 @@ class merchant extends ecjia_merchant {
 	}
 	
     public function init() {
-    	$this->admin_priv('shopguide_manage');
+    	$this->admin_priv('shopguide_setup');
     	
     	$this->assign('ur_here', RC_Lang::get('shopguide::shopguide.shopguide'));
     	
@@ -55,7 +55,7 @@ class merchant extends ecjia_merchant {
     }
     
     public function step_post() {
-    	$this->admin_priv('shopguide_manage');
+    	$this->admin_priv('shopguide_setup');
 
     	$step = !empty($_GET['step']) ? intval($_GET['step']) : 1;
     	

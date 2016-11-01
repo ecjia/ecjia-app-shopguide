@@ -9,7 +9,7 @@ class shopguide_admin_purview_api extends Component_Event_Api {
     
     public function call(&$options) {
         $purviews = array(
-            array('action_name' => RC_Lang::get('shopguide::shopguide.shopguide_manage'), 'action_code' => 'shopguide_manage', 'relevance' => ''),
+            array('action_name' => RC_Lang::get('shopguide::shopguide.shopguide_setup'), 'action_code' => 'shopguide_setup', 'relevance' => ''),
         );
         return $purviews;
     }
