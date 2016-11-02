@@ -49,7 +49,10 @@ class merchant extends ecjia_merchant {
 		}
 		
 		$merchant_info['merchants_name'] = RC_DB::table('store_franchisee')->where('store_id', $_SESSION['store_id'])->pluck('merchants_name');
-
+		$s_time = 480;
+		$e_time = 1260;
+		$merchant_info['shop_time_value'] = $s_time.",".$e_time;
+		
 		$this->assign('data', $merchant_info);
 		$this->display('shop_guide.dwt');
     }

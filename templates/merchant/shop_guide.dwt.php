@@ -110,8 +110,9 @@
                             <label class="control-label col-lg-2">{t}营业时间：{/t}</label>
                             <div class="col-lg-6">
                                 <div class="range">
-                                    <input class="range-slider" name="shop_trade_time" type="hidden" value="{$data.shop_trade_time}"/>
+                                    <input class="range-slider" name="shop_trade_time" type="hidden" value="{$data.shop_time_value}"/>
                                 </div>
+                                <span class="help-block">拖拽选取营业时间段</span>
                             </div>
                         </div>
 
