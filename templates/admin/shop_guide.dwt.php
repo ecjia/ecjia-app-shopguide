@@ -237,8 +237,8 @@
 			<!-- {elseif $smarty.get.step eq '3'} -->
 			<fieldset class="step_three step" title="{lang key='shopguide::shopguide.result_info'}">
 			<div class="row-fluid padding5 m_l15">
-				<div class="span2"><a class="btn w100">{lang key='shopguide::shopguide.view_shop'}</a></div>
-				<div class="span2"><a class="btn w100" href="{RC_Uri::url('@shop_config/init')}">{lang key='shopguide::shopguide.shop_config'}</a></div>
+				<div class="span2"><a class="btn w100" href="{RC_Uri::url('@index/init')}">{lang key='shopguide::shopguide.view_shop'}</a></div>
+				<div class="span2"><a class="btn w100" href="{RC_Uri::url('setting/shop_config/init')}&code=shop_info">{lang key='shopguide::shopguide.shop_config'}</a></div>
 				<div class="span2"><a class="btn w100" href="{RC_Uri::url('@privilege/add')}">{lang key='shopguide::shopguide.add_admin'}</a></div>
 			</div>
 			
