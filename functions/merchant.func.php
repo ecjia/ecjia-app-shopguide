@@ -144,7 +144,7 @@
     /*
      * 管理员操作对象和动作
      */
-    function assign_adminlog_content(){
+    function assign_adminlog_contents(){
         ecjia_admin_log::instance()->add_object('merchant', '我的店铺');
     }
 
