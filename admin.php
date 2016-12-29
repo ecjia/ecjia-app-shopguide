@@ -31,8 +31,8 @@ class admin extends ecjia_admin {
 		$this->db_brand 		= RC_Loader::load_app_model('brand_model', 'goods');
 		$this->db_goods 		= RC_Loader::load_app_model('goods_model', 'goods');
 		
-		RC_Loader::load_app_func('system_goods', 'goods');
-		
+		RC_Loader::load_app_func('global', 'goods');
+        
 		RC_Style::enqueue_style('jquery-stepy');
 		RC_Script::enqueue_script('jquery-validate');
 		RC_Style::enqueue_style('uniform-aristo');
