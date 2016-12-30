@@ -20,7 +20,7 @@ class merchant extends ecjia_merchant {
 		RC_Script::enqueue_script('ecjia-region');
 		
         RC_Loader::load_app_func('global', 'goods');
-		RC_Loader::load_app_func('merchant');
+		RC_Loader::load_app_func('merchant_shopguide');
 		
 		RC_Script::enqueue_script('ecjia-mh-bootstrap-fileupload-js');
 		RC_Style::enqueue_style('ecjia-mh-bootstrap-fileupload-css');
