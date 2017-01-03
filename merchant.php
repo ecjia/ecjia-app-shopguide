@@ -107,8 +107,6 @@ class merchant extends ecjia_merchant {
     		}
     		if(!empty($merchants_config)){
     			$merchant = set_merchant_config('', '', $merchants_config);
-//     		}else{
-//     			return $this->showmessage('请编辑要修改的内容', ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_ERROR);
     		}
     		
     		ecjia_merchant::admin_log('修改店铺基本信息', 'edit', 'merchant');
