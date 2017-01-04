@@ -1,9 +1,12 @@
 <?php
+defined('IN_ECJIA') or exit('No permission resources.');
+
 /**
  * 商家开启向导
  * @author wutifang
  *
  */
+ 
 class merchant extends ecjia_merchant {
 	private $db_region;
 	
@@ -94,9 +97,9 @@ class merchant extends ecjia_merchant {
     		}
     		$time = array();
     		if(!empty($shop_trade_time)){
-    			$shop_time = explode(',',$shop_trade_time);
-    			$time['start']  = $shop_time['0'];
-    			$time['end']    = $shop_time['1'];
+    			$shop_time       = explode(',',$shop_trade_time);
+    			$time['start']   = $shop_time['0'];
+    			$time['end']     = $shop_time['1'];
     			$shop_trade_time = serialize($time);
     			if($shop_trade_time != get_merchant_config('shop_trade_time')){
     				$merchants_config['shop_trade_time'] = $shop_trade_time;// 营业时间
@@ -158,8 +161,8 @@ class merchant extends ecjia_merchant {
     		}
     		
     		/* 处理商品图片 */
-    		$goods_img = ''; 	// 初始化商品图片
-    		$goods_thumb = ''; 	// 初始化商品缩略图
+    		$goods_img    = ''; 	// 初始化商品图片
+    		$goods_thumb  = ''; 	// 初始化商品缩略图
     		$img_original = ''; // 初始化原始图片
     		
     		$upload = RC_Upload::uploader('image', array('save_path' => 'images', 'auto_sub_dirs' => true));
@@ -235,7 +238,7 @@ class merchant extends ecjia_merchant {
     //获取支付方式信息
     public function get_pay() {
     	$code = !empty($_POST['code']) ? trim($_POST['code']) : '';
-    	$pay = RC_Api::api('payment', 'pay_info', array('code' => $code));
+    	$pay  = RC_Api::api('payment', 'pay_info', array('code' => $code));
     	
     	return $this->showmessage('', ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_SUCCESS, array('content' => $pay));
     }

@@ -1,8 +1,9 @@
 <?php
+defined('IN_ECJIA') or exit('No permission resources.');
+
 /**
  * ECJIA 地区切换程序
  */
-defined('IN_ECJIA') or exit('No permission resources.');
 
 class region extends ecjia_admin {
 	public function __construct() {

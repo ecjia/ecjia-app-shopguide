@@ -1,9 +1,12 @@
 <?php
+defined('IN_ECJIA') or exit('No permission resources.');
+
 /**
  * 开启向导入口
  * @author royalwang
  *
  */
+ 
 class admin extends ecjia_admin {
 	private $db_region;
 	private $db_shipping;
@@ -212,8 +215,8 @@ class admin extends ecjia_admin {
     					);
     				}
     			}
-    			$pay_config = serialize($pay_config);
-    			$array = array('pay_config' => $pay_config,);	
+    			$pay_config  = serialize($pay_config);
+    			$array       = array('pay_config' => $pay_config,);	
     			$this->db_payment->payment_manage($array, array('pay_code' => $payment));
     		}
     		
@@ -267,8 +270,8 @@ class admin extends ecjia_admin {
     		}
     			
     		/* 处理商品图片 */
-    		$goods_img = ''; 	// 初始化商品图片
-    		$goods_thumb = ''; 	// 初始化商品缩略图
+    		$goods_img    = ''; 	// 初始化商品图片
+    		$goods_thumb  = ''; 	// 初始化商品缩略图
     		$img_original = ''; // 初始化原始图片
     			
     		$upload = RC_Upload::uploader('image', array('save_path' => 'images', 'auto_sub_dirs' => true));
@@ -312,7 +315,7 @@ class admin extends ecjia_admin {
     		
     		if (isset($goods_sn_bool) && $goods_sn_bool) {
     			$goods_sn = generate_goods_sn($goods_id);
-    			$data = array('goods_sn' => $goods_sn);
+    			$data     = array('goods_sn' => $goods_sn);
     			$this->db_goods->goods_update(array('goods_id' => $goods_id), $data);
     		}
     		
@@ -339,7 +342,7 @@ class admin extends ecjia_admin {
     //获取支付方式信息
     public function get_pay() {
     	$code = !empty($_POST['code']) ? trim($_POST['code']) : '';
-    	$pay = RC_Api::api('payment', 'pay_info', array('code' => $code));
+    	$pay  = RC_Api::api('payment', 'pay_info', array('code' => $code));
     	
     	return $this->showmessage('', ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_SUCCESS, array('content' => $pay));
     }

@@ -1,4 +1,5 @@
 <?php
+defined('IN_ECJIA') or exit('No permission resources.');
 
 /*
  * 获取店铺基本信息
@@ -17,10 +18,10 @@ function get_merchant_info(){
         'shop_notice'               => '', // 店铺公告
     );
 
-    $data = get_merchant_config('', $data);
-    $shop_time = unserialize($data['shop_trade_time']);
+    $data       = get_merchant_config('', $data);
+    $shop_time  = unserialize($data['shop_trade_time']);
     unset($data['shop_trade_time']);
-    $data['shop_trade_time'] = implode(',', $shop_time);
+    $data['shop_trade_time']    = implode(',', $shop_time);
     $data['shop_nav_background']= !empty($data['shop_nav_background'])? RC_Upload::upload_url($data['shop_nav_background']) : '';
     $data['shop_logo']          = !empty($data['shop_logo'])? RC_Upload::upload_url($data['shop_logo']) : '';
     $data['shop_banner_pic']    = !empty($data['shop_banner_pic'])? RC_Upload::upload_url($data['shop_banner_pic']) : '';
@@ -55,9 +56,9 @@ function get_merchant_config($code, $arr){
  *  @param string $old_images 旧图片
  */
 function file_upload_info($path, $code, $old_images){
-    $code = empty($code)? $path : $code;
+    $code   = empty($code)? $path : $code;
     $upload = RC_Upload::uploader('image', array('save_path' => 'merchant/'.$_SESSION['store_id'].'/data/'.$path, 'auto_sub_dirs' => true));
-    $file = $_FILES[$code];
+    $file   = $_FILES[$code];
 
     if (!empty($file)&&((isset($file['error']) && $file['error'] == 0) || (!isset($file['error']) && $file['tmp_name'] != 'none'))) {
         // 检测图片类型是否符合
