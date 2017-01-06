@@ -4,7 +4,6 @@ defined('IN_ECJIA') or exit('No permission resources.');
 /**
  * ECJIA 开店向导语言项
  */
-
 return array(
 	'shop_name_required'	=> 'Please enter the shop name',
 	'goods_cat_required' 	=> 'Please enter a category',

@@ -4,9 +4,7 @@ defined('IN_ECJIA') or exit('No permission resources.');
 /**
  * 开启向导入口
  * @author royalwang
- *
  */
- 
 class admin extends ecjia_admin {
 	private $db_region;
 	private $db_shipping;

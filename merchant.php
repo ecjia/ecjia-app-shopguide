@@ -4,9 +4,7 @@ defined('IN_ECJIA') or exit('No permission resources.');
 /**
  * 商家开启向导
  * @author wutifang
- *
  */
- 
 class merchant extends ecjia_merchant {
 	private $db_region;
 	

@@ -1,5 +1,5 @@
-;
-(function (app, $) {
+// JavaScript Document
+;(function (app, $) {
     app.shopguide = {
         init: function () {
             app.shopguide.submit();
@@ -153,3 +153,5 @@
         },
     }
 })(ecjia.admin, jQuery);
+
+//end

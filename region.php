@@ -4,7 +4,6 @@ defined('IN_ECJIA') or exit('No permission resources.');
 /**
  * ECJIA 地区切换程序
  */
-
 class region extends ecjia_admin {
 	public function __construct() {
 		parent::__construct();

@@ -22,9 +22,9 @@ function get_merchant_info(){
     $shop_time  = unserialize($data['shop_trade_time']);
     unset($data['shop_trade_time']);
     $data['shop_trade_time']    = implode(',', $shop_time);
-    $data['shop_nav_background']= !empty($data['shop_nav_background'])? RC_Upload::upload_url($data['shop_nav_background']) : '';
-    $data['shop_logo']          = !empty($data['shop_logo'])? RC_Upload::upload_url($data['shop_logo']) : '';
-    $data['shop_banner_pic']    = !empty($data['shop_banner_pic'])? RC_Upload::upload_url($data['shop_banner_pic']) : '';
+    $data['shop_nav_background']= !empty($data['shop_nav_background'])  ? RC_Upload::upload_url($data['shop_nav_background'])   : '';
+    $data['shop_logo']          = !empty($data['shop_logo'])            ? RC_Upload::upload_url($data['shop_logo'])             : '';
+    $data['shop_banner_pic']    = !empty($data['shop_banner_pic'])      ? RC_Upload::upload_url($data['shop_banner_pic'])       : '';
     return $data;
 }
 

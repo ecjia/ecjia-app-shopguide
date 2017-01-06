@@ -4,7 +4,6 @@ defined('IN_ECJIA') or exit('No permission resources.');
 /**
  * 开店向导
  */
-
 return array(
 	'identifier' 	=> 'ecjia.shopguide',
 	'directory' 	=> 'shopguide',
