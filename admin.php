@@ -193,8 +193,8 @@ class admin extends ecjia_admin {
 	    		if ($area_count > 0) {
 	    			return $this->showmessage(RC_Lang::get('shopguide::shopguide.area_name_exist'), ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_ERROR);
 	    		} else {
-	    			$shipping_data = $this->db_shipping->shipping_find(array('shipping_id' => $shipping), 'shipping_code, support_cod, shipping_name');
-	    			 
+	    			$shipping_data = $this->db_shipping->shipping_find(array('shipping_id' => $shipping), array('shipping_code', 'support_cod', 'shipping_name'));
+	    			
 	    			$config = array();
 	    			$shipping_handle = new shipping_factory($shipping_data['shipping_code']);
 	    			$config = $shipping_handle->form_format($config, true);
@@ -259,8 +259,8 @@ class admin extends ecjia_admin {
     				}
     			}
     			$pay_config  = serialize($pay_config);
-    			$array       = array('pay_config' => $pay_config,);	
-    			$this->db_payment->payment_manage($array, array('pay_code' => $payment));
+    			$array       = array('pay_config' => $pay_config);	
+    			$this->db_payment->where(array('pay_code' => $payment))->update($array);
     		}
     		
     		ecjia_config::instance()->clear_cache();
