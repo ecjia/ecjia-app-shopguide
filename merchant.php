@@ -104,7 +104,7 @@ class merchant extends ecjia_merchant {
     }
     
     public function step_post() {
-    	$this->admin_priv('shopguide_setup');
+    	$this->admin_priv('shopguide_setup', ecjia::MSGTYPE_JSON);
 
     	$step = !empty($_GET['step']) ? intval($_GET['step']) : 1;
     	
@@ -117,29 +117,29 @@ class merchant extends ecjia_merchant {
     		$merchant_config = array();
     		
     		// 店铺导航背景图
-    		if(!empty($_FILES['shop_nav_background']) && empty($_FILES['error']) && !empty($_FILES['shop_nav_background']['name'])){
+    		if (!empty($_FILES['shop_nav_background']) && empty($_FILES['error']) && !empty($_FILES['shop_nav_background']['name'])) {
     			$merchants_config['shop_nav_background'] = file_upload_info('shop_nav_background', '', $shop_nav_background);
     		}
     		// 默认店铺页头部LOGO
-    		if(!empty($_FILES['shop_logo']) && empty($_FILES['error']) && !empty($_FILES['shop_logo']['name'])){
+    		if (!empty($_FILES['shop_logo']) && empty($_FILES['error']) && !empty($_FILES['shop_logo']['name'])) {
     			$merchants_config['shop_logo'] = file_upload_info('shop_logo', '', $shop_logo);
     		}
     		
     		// APPbanner图
-    		if(!empty($_FILES['shop_banner_pic']) && empty($_FILES['error']) && !empty($_FILES['shop_banner_pic']['name'])){
+    		if (!empty($_FILES['shop_banner_pic']) && empty($_FILES['error']) && !empty($_FILES['shop_banner_pic']['name'])) {
     			$merchants_config['shop_banner_pic'] = file_upload_info('shop_banner', 'shop_banner_pic', $shop_banner_pic);
     		}
     		// 如果没有上传店铺LOGO 提示上传店铺LOGO
     		$shop_logo = get_merchant_config('shop_logo');
-    		if(empty($shop_logo) && empty($merchants_config['shop_logo'])){
+    		if (empty($shop_logo) && empty($merchants_config['shop_logo'])) {
     			return $this->showmessage('请上传店铺LOGO', ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_ERROR);
     		}
     		
-    		if(!empty($shop_description)){
+    		if (!empty($shop_description)) {
     			$merchants_config['shop_description'] = $shop_description;// 店铺描述
     		}
     		$time = array();
-    		if(!empty($shop_trade_time)){
+    		if (!empty($shop_trade_time)) {
     			$shop_time       = explode(',',$shop_trade_time);
     			$time['start']   = $shop_time['0'];
     			$time['end']     = $shop_time['1'];
@@ -148,10 +148,10 @@ class merchant extends ecjia_merchant {
     				$merchants_config['shop_trade_time'] = $shop_trade_time;// 营业时间
     			}
     		}
-    		if(!empty($shop_notice)){
+    		if (!empty($shop_notice)) {
     			$merchants_config['shop_notice'] = $shop_notice;// 店铺公告
     		}
-    		if(!empty($merchants_config)){
+    		if (!empty($merchants_config)) {
     			$merchant = set_merchant_config('', '', $merchants_config);
     		}
     		

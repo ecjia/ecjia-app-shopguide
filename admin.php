@@ -141,7 +141,7 @@ class admin extends ecjia_admin {
     }
     
     public function step_post() {
-    	$this->admin_priv('shopguide_setup');
+    	$this->admin_priv('shopguide_setup', ecjia::MSGTYPE_JSON);
     	
     	$step = !empty($_GET['step']) ? intval($_GET['step']) : 1;
     	if ($step == 1) {
