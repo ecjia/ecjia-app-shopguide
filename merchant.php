@@ -179,21 +179,21 @@ class merchant extends ecjia_merchant {
     			return $this->showmessage(RC_Lang::get('shopguide::shopguide.goods_name_required'), ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_ERROR);
     		}
 
-    		$goods_type_id = 0;
-    		if (!empty($goods_type)) {
-    			RC_DB::table('goods_type')->where('cat_name', $goods_type)->where('store_id', $_SESSION['store_id'])->count();
-    			if ($count > 0) {
-    				return $this->showmessage('该分类名称已存在', ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_ERROR);
-    			}
-    			$goods_type_id = RC_DB::table('goods_type')->insertGetId(array('cat_name' => $goods_type, 'enabled' => 1, 'store_id' => $_SESSION['store_id']));
-    		}
-
     		$count = RC_DB::table('merchants_category')->where('cat_name', $cat_name)->where('store_id', $_SESSION['store_id'])->count();
     		if ($count > 0) {
     			return $this->showmessage(RC_Lang::get('shopguide::shopguide.cat_name_exist'), ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_ERROR);
     		}
     		$merchant_cat_id = RC_DB::table('merchants_category')->insertGetId(array('cat_name' => $cat_name, 'is_show' => 1, 'store_id' => $_SESSION['store_id']));
 
+    		$goods_type_id = 0;
+    		if (!empty($goods_type)) {
+    			$count = RC_DB::table('goods_type')->where('cat_name', $goods_type)->where('store_id', $_SESSION['store_id'])->count();
+    			if ($count > 0) {
+    				return $this->showmessage('该商品类型已存在', ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_ERROR);
+    			}
+    			$goods_type_id = RC_DB::table('goods_type')->insertGetId(array('cat_name' => $goods_type, 'enabled' => 1, 'store_id' => $_SESSION['store_id']));
+    		}
+    		
     		//生成商品货号
     		$max_id = RC_DB::table('goods')->selectRaw('(MAX(goods_id) + 1) as max')->first();
     		if (empty($max_id['max'])) {
