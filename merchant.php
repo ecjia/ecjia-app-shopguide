@@ -139,12 +139,23 @@ class merchant extends ecjia_merchant {
     			$merchants_config['shop_description'] = $shop_description;// 店铺描述
     		}
     		$time = array();
+
     		if (!empty($shop_trade_time)) {
     			$shop_time       = explode(',',$shop_trade_time);
-    			$time['start']   = $shop_time['0'];
-    			$time['end']     = $shop_time['1'];
-    			$shop_trade_time = serialize($time);
-    			if($shop_trade_time != get_merchant_config('shop_trade_time')){
+	            $s_h             = ($shop_time[0] / 60);
+	            $s_i             = ($shop_time[0] % 60);
+	            $e_h             = ($shop_time[1] / 60);
+	            $e_i             = ($shop_time[1] % 60);
+	            $start_h         = empty($s_h)? '00' : intval($s_h);
+	            $start_i         = empty($s_i)? '00' : intval($s_i);
+	            $end_h           = empty($e_h)? '00' : intval($e_h);
+	            $end_i           = empty($e_i)? '00' : intval($e_i);
+	            $start_time      = $start_h.":".$start_i;
+	            $end_time        = $end_h.":".$end_i;
+	            $time['start']   = $start_time;
+	            $time['end']     = $end_time;
+	            $shop_trade_time = serialize($time);
+    			if ($shop_trade_time != get_merchant_config('shop_trade_time')) {
     				$merchants_config['shop_trade_time'] = $shop_trade_time;// 营业时间
     			}
     		}
