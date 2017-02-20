@@ -267,12 +267,12 @@ class admin extends ecjia_admin {
     		return $this->showmessage('', ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_SUCCESS, array('url' => RC_Uri::url('shopguide/admin/init', array('step' => 2))));
     		
     	} elseif ($step == 2) {
-    		$cat_name 		= empty($_POST['cat_name']) 		? '' 	: $_POST['cat_name'];
-    		$goods_name 	= empty($_POST['goods_name']) 		? '' 	: $_POST['goods_name'];
+    		$cat_name 		= empty($_POST['cat_name']) 		? '' 	: trim($_POST['cat_name']);
+    		$goods_name 	= empty($_POST['goods_name']) 		? '' 	: trim($_POST['goods_name']);
     		
     		$goods_number 	= empty($_POST['goods_num'])        ? 0 	: intval($_POST['goods_num']);
-    		$goods_brand 	= empty($_POST['goods_brand']) 		? '' 	: $_POST['goods_brand'];
-    		$goods_price 	= empty($_POST['goods_price']) 		? 0 	: $_POST['goods_price'];
+    		$goods_brand 	= empty($_POST['goods_brand']) 		? '' 	: trim($_POST['goods_brand']);
+    		$goods_price 	= empty($_POST['goods_price'])|| !is_numeric($_POST['goods_price']) ? 0 : $_POST['goods_price'];
     		
     		$is_best 		= empty($_POST['is_best']) 			? 0 	: 1;
     		$is_new 		= empty($_POST['is_new']) 			? 0 	: 1;
