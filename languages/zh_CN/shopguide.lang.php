@@ -107,6 +107,7 @@ return array(
 	'add_admin'			=> '添加管理员',
 	'add_goods_cat'		=> '添加商品分类',
 	'add_goods'			=> '添加商品',
+	'goods_list'		=> '商品列表',
 	'goods_type'		=> '商品类型',
 	'choose_template'	=> '选择模板',
 	'add_favourable'	=> '添加优惠活动',

@@ -270,7 +270,7 @@ class admin extends ecjia_admin {
     		$cat_name 		= empty($_POST['cat_name']) 		? '' 	: $_POST['cat_name'];
     		$goods_name 	= empty($_POST['goods_name']) 		? '' 	: $_POST['goods_name'];
     		
-    		$goods_number 	= empty($_POST['goods_num']) 		? '' 	: $_POST['goods_num'];
+    		$goods_number 	= empty($_POST['goods_num'])        ? 0 	: intval($_POST['goods_num']);
     		$goods_brand 	= empty($_POST['goods_brand']) 		? '' 	: $_POST['goods_brand'];
     		$goods_price 	= empty($_POST['goods_price']) 		? 0 	: $_POST['goods_price'];
     		

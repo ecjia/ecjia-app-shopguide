@@ -244,7 +244,7 @@
 			
 			<div class="row-fluid padding5 m_l15">
 				<div class="span2"><a class="btn w100" href="{RC_Uri::url('goods/admin_category/add')}">{lang key='shopguide::shopguide.add_goods_cat'}</a></div>
-				<div class="span2"><a class="btn w100" href="{RC_Uri::url('goods/admin/add')}">{lang key='shopguide::shopguide.add_goods'}</a></div>
+				<div class="span2"><a class="btn w100" href="{RC_Uri::url('goods/admin/init')}">{lang key='shopguide::shopguide.goods_list'}</a></div>
 				<div class="span2"><a class="btn w100" href="{RC_Uri::url('goods/admin_goods_type/init')}">{lang key='shopguide::shopguide.goods_type'}</a></div>
 			</div>
 			
