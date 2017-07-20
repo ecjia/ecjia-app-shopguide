@@ -298,7 +298,7 @@ class admin extends ecjia_admin {
     			RC_DB::table('category')->where('cat_id', $cat_id)->update(array('cat_name' => $cat_name));
     		} else {
     			//添加平台商品分类
-//     			$cat_id = RC_DB::table('category')->insertGetId(array('cat_name' => $cat_name, 'parent_id' => 0, 'is_show' => 1));
+    			$cat_id = RC_DB::table('category')->insertGetId(array('cat_name' => $cat_name, 'parent_id' => 0, 'is_show' => 1));
     		}
     		
     		if (!empty($store_cat_id)) {
@@ -307,7 +307,7 @@ class admin extends ecjia_admin {
     		} else {
     			//添加店铺分类
     			$data = array('cat_name' => $store_cat, 'parent_id' => 0, 'is_show' => 1);
-//     			$store_cat_id = RC_DB::table('store_category')->insertGetId($data);
+    			$store_cat_id = RC_DB::table('store_category')->insertGetId($data);
     		}
     		
     		//添加操作日志
