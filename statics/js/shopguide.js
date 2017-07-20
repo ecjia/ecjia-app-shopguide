@@ -4,6 +4,7 @@
         init: function () {
             app.shopguide.submit();
             app.shopguide.choose_area();
+            app.shopguide.fileupload();
  
             $('select[name="shipping"]').on('change', function () {
                 if ($(this).val() != '') {
@@ -28,6 +29,26 @@
                 }
             });
         },
+        
+		fileupload: function() {
+			$(".fileupload").on('click', function(e) {
+				e.preventDefault();
+				$(this).parent().find("input").trigger('click');
+			})
+		},
+		
+		previewImage: function(file) {
+			if (file.files && file.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function(evt) {
+					$(file).siblings('.fileupload').addClass('preview-img').css("backgroundImage", "url(" + evt.target.result + ")");
+				}
+				reader.readAsDataURL(file.files[0]);
+			} else {
+				$(file).prev('.fileupload-exists').remove();
+				$(file).siblings('.fileupload').addClass('preview-img').css("filter", "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src='" + file.value + "'");
+			}
+		},
  
         submit: function () {
             var $form = $("form[name='theForm']");
