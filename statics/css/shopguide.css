@@ -124,7 +124,7 @@
  	position: absolute;
    	width: 240px;
    	height: 400px;
-   	left: 650px;
+   	left: 610px;
    	top: 25px;
 	text-align: center;
 }
@@ -134,12 +134,21 @@
 	line-height: 50px;
 }
 
-.shop-logo.fileupload {
+.image-content .shop-logo {
 	background-image: url("../images/shop-logo.png");
 	background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 	width: 240px;
     height: 205px;
+	display: block;
+	padding: 0;
+}
+
+.image-content .shop-logo img {
 	background-color: #eee;
+}
+
+.image-content .shop-logo-btn {
+	margin: 20px 0;
 }

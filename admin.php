@@ -188,7 +188,6 @@ class admin extends ecjia_admin {
 				$this->assign('payment_list', $payment_list);
 			}
 		}
-		
 
 		$this->assign('data', $data);
 		$this->assign('step', $step);
@@ -215,6 +214,17 @@ class admin extends ecjia_admin {
     		$ym  			= empty($_POST['ym'])				? '' : $_POST['ym'];				//微信号码
     		$msn  			= empty($_POST['msn'])				? '' : $_POST['msn'];				//微博号码
     		$service_email	= empty($_POST['service_email'])	? '' : $_POST['service_email'];		//电子邮件
+    		
+    		if (isset($_FILES['shop_logo'])) {
+    			$upload = RC_Upload::uploader('image', array('save_path' => 'data/assets/'.ecjia::config('template'), 'auto_sub_dirs' => true));
+    			$image_info = $upload->upload($_FILES['shop_logo']);
+    			if (empty($image_info)) {
+    				return $this->showmessage($upload->error(), ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_ERROR);
+    			} else {
+    				$file_name = $upload->get_position($image_info);
+    				ecjia_config::instance()->write_config('shop_logo', $file_name);
+    			}
+    		}
     		
     		if (!empty($shop_name)) {
     			ecjia_config::instance()->write_config('shop_name', $shop_name);

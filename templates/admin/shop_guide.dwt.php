@@ -32,11 +32,17 @@
 						<input class="w500" type="text" name="shop_name" value="{$data.shop_name}" placeholder="请输入商店名称" />
 						<span class="input-must">{lang key='system::system.require_field'}</span>
 					</div>
-					<div class="image-content">
-						<div class="shop-logo fileupload"></div>
-						<input class="hide" type="file" name="shop_logo" onchange="ecjia.admin.shopguide.previewImage(this)" />
+					<div class="image-content fileupload fileupload-new" data-provides="fileupload">
+						<div class="fileupload-preview thumbnail fileupload-exists shop-logo">
+							<img src="{$app_url}/shop-logo.png" />
+						</div>
 						<span class="text">请在上传前将文件名命名为logo.gif</span>
-						<input type="button" class="btn btn-gebo" value="上传logo"/>
+						<span class="btn btn-file">
+							<span class="fileupload-new">上传logo</span>
+							<span class="fileupload-exists">{t}修改{/t}</span>
+							<input type="file" name="shop_logo" />
+						</span>
+						<a class="btn fileupload-exists" data-toggle="removefile" data-msg="{t}您确定要删除此文件吗？{/t}">{t}删除{/t}</a>
 					</div>
 				</div>
 				
