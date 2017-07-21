@@ -137,6 +137,10 @@ class admin extends ecjia_admin {
 			$data['ym'] 			= ecjia::config('ym');
 			$data['msn'] 			= ecjia::config('msn');
 			$data['service_email'] 	= ecjia::config('service_email');
+			$data['shop_logo']		= ecjia::config('shop_logo');
+			if (!empty($data['shop_logo'])) {
+				$data['shop_logo'] = RC_Upload::upload_url().'/'.$data['shop_logo'];
+			}
 		}
 		
     	$this->assign('countries', $this->db_region->get_regions());

@@ -34,7 +34,7 @@
 					</div>
 					<div class="image-content fileupload fileupload-new" data-provides="fileupload">
 						<div class="fileupload-preview thumbnail fileupload-exists shop-logo">
-							<img src="{$app_url}/shop-logo.png" />
+							<img src="{if $data.shop_logo}{$data.shop_logo}?{time()}{else}{$app_url}/shop-logo.png{/if}" />
 						</div>
 						<span class="text">请在上传前将文件名命名为logo.gif</span>
 						<span class="btn btn-file">
@@ -61,21 +61,21 @@
 							<!-- {/foreach} -->
 						</select>
 						<div class="f_l m_l17">
-						<select class="w160 region-summary-provinces" name="shop_province" id="selProvinces" data-toggle="regionSummary" data-type="2" data-target="region-summary-cities">
-							<option value='0'>请选择省份...</option>
-							<!-- {foreach from=$provinces item=region} -->
-							<option value="{$region.region_id}" {if $region.region_id eq $data.shop_province}selected{/if}>{$region.region_name}</option>
-							<!-- {/foreach} -->
-						</select>
+							<select class="w160 region-summary-provinces" name="shop_province" id="selProvinces" data-toggle="regionSummary" data-type="2" data-target="region-summary-cities">
+								<option value='0'>请选择省份...</option>
+								<!-- {foreach from=$provinces item=region} -->
+								<option value="{$region.region_id}" {if $region.region_id eq $data.shop_province}selected{/if}>{$region.region_name}</option>
+								<!-- {/foreach} -->
+							</select>
 						</div>
 						
 						<div class="f_l m_l17">
-						<select class="w160 region-summary-cities" name="shop_city" id="selCities">
-							<option value='0'>请选择城市...</option>
-							<!-- {foreach from=$cities item=region} -->
-							<option value="{$region.region_id}" {if $region.region_id eq $data.shop_city}selected{/if}>{$region.region_name}</option>
-							<!-- {/foreach} -->
-						</select>
+							<select class="w160 region-summary-cities" name="shop_city" id="selCities">
+								<option value='0'>请选择城市...</option>
+								<!-- {foreach from=$cities item=region} -->
+								<option value="{$region.region_id}" {if $region.region_id eq $data.shop_city}selected{/if}>{$region.region_name}</option>
+								<!-- {/foreach} -->
+							</select>
 						</div>
 					</div>
 				</div>
@@ -105,7 +105,6 @@
 					<input class="btn btn-gebo" type="submit" value="{lang key='shopguide::shopguide.next_step'}" />
 				</div>
             </fieldset>
-            
             <!-- {elseif $smarty.get.step eq '2'} -->
             <fieldset class="step_two step">
             	<h2>添加分类</h2>
