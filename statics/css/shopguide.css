@@ -143,12 +143,9 @@
     height: 205px;
 	display: block;
 	padding: 0;
+	cursor: pointer;
 }
 
 .image-content .shop-logo img {
 	background-color: #eee;
-}
-
-.image-content .shop-logo-btn {
-	margin: 20px 0;
 }
