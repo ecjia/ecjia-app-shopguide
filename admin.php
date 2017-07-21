@@ -340,6 +340,16 @@ class admin extends ecjia_admin {
     		return $this->showmessage(RC_Lang::get('shopguide::shopguide.complete'), ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_SUCCESS, array('pjaxurl' => RC_Uri::url('shopguide/admin/init', array('step' => 4))));
     	}
     }
+    
+    public function drop_logo () {
+    	$this->admin_priv('shopguide_setup', ecjia::MSGTYPE_JSON);
+    	$shop_logo = ecjia::config('shop_logo');
+    	$disk = RC_Filesystem::disk();
+    	$disk->delete(RC_Upload::upload_path() . $shop_logo);
+    	
+    	ecjia_config::instance()->write_config('shop_logo', '');
+    	return $this->showmessage('删除成功', ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_SUCCESS);
+    }
 }
 
 // end

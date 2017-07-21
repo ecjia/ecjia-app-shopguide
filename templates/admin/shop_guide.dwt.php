@@ -32,7 +32,7 @@
 						<input class="w500" type="text" name="shop_name" value="{$data.shop_name}" placeholder="请输入商店名称" />
 						<span class="input-must">{lang key='system::system.require_field'}</span>
 					</div>
-					<div class="image-content fileupload fileupload-new" data-provides="fileupload">
+					<div class="image-content fileupload fileupload-{if $data.shop_logo}exists{else}new{/if}" data-provides="fileupload">
 						<div class="fileupload-preview thumbnail fileupload-exists shop-logo">
 							<img src="{if $data.shop_logo}{$data.shop_logo}?{time()}{else}{$app_url}/shop-logo.png{/if}" />
 						</div>
@@ -42,7 +42,7 @@
 							<span class="fileupload-exists">{t}修改{/t}</span>
 							<input type="file" name="shop_logo" />
 						</span>
-						<a class="btn fileupload-exists" data-toggle="removefile" data-msg="{t}您确定要删除此文件吗？{/t}">{t}删除{/t}</a>
+						<a class="btn fileupload-exists" {if $data.shop_logo}data-toggle="ajaxremove"{else}data-dismiss="fileupload"{/if} data-msg="{t}您确定要删除该logo吗？{/t}" href="{url path='shopguide/admin/drop_logo'}">{t}删除{/t}</a>
 					</div>
 				</div>
 				
