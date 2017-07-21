@@ -265,9 +265,9 @@
 				    <div class="step_three step">
 						<div class="shopguide-complete" style="width:60%;margin: 0 auto;">
 							<div class="complete-header t_c">
-								<img src="{$app_url}/complete.png" />
+								<img src="{$app_url}/mh-complete.png" />
 								<div class="complete-notice">恭喜您！网店可以使用了！</div>
-								<a class="step-li" href="{RC_Uri::url('@index/init')}">完成向导</a>
+								<a class="step-li" href="{RC_Uri::url('@index/init')}" style="margin:0;">完成向导</a>
 								<div class="complete-title">以下是部分常用功能的链接，您关闭本页面后，依然可以在左侧菜单中找到</div>
 							</div>
 							<ul class="complete-bottom">
