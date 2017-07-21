@@ -111,7 +111,7 @@
     padding-right: 10px;
 }
 
-.complete-li:hover {
+.complete-li a:hover, .complete-li a:link, .complete-li a:active, .complete-li a:visited {
 	text-decoration: none;
 	color: #333;
 }
