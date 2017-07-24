@@ -192,49 +192,44 @@ class merchant extends ecjia_merchant {
     	
     	if ($step == 1) {
     		$store_id               = $_SESSION['store_id'];
+    		$shop_kf_mobile         = ($_POST['shop_kf_mobile'] == get_merchant_config('shop_kf_mobile'))       ? '' : htmlspecialchars($_POST['shop_kf_mobile']);
     		$shop_description       = ($_POST['shop_description'] == get_merchant_config('shop_description'))   ? '' : htmlspecialchars($_POST['shop_description']);
     		$shop_trade_time        = empty($_POST['shop_trade_time'])                                          ? '' : htmlspecialchars($_POST['shop_trade_time']);
     		$shop_notice            = ($_POST['shop_notice'] == get_merchant_config('shop_notice'))             ? '' : htmlspecialchars($_POST['shop_notice']);
     		
     		$merchant_config = array();
-    		
-//     		// 店铺导航背景图
-//     		if (!empty($_FILES['shop_nav_background']) && empty($_FILES['error']) && !empty($_FILES['shop_nav_background']['name'])) {
-//     			$merchants_config['shop_nav_background'] = shopguide_file_upload_info('shop_nav_background', '', $shop_nav_background);
-//     		}
 
-    		// 如果没有上传店铺LOGO 提示上传店铺LOGO
+    		//如果没有上传店铺LOGO 提示上传店铺LOGO
     		$shop_logo = get_merchant_config('shop_logo');
     		if (empty($shop_logo) && empty($merchants_config['shop_logo'])) {
     			return $this->showmessage('请上传店铺LOGO', ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_ERROR);
     		}
     		
-    		// 默认店铺页头部LOGO
+    		//默认店铺页头部LOGO
     		if (!empty($_FILES['shop_logo']) && empty($_FILES['error']) && !empty($_FILES['shop_logo']['name'])) {
     			$merchants_config['shop_logo'] = shopguide_file_upload_info('shop_logo', '', $shop_logo);
     		}
     		
-    		// APPbanner图
+    		//APPbanner图
     		if (!empty($_FILES['shop_banner_pic']) && empty($_FILES['error']) && !empty($_FILES['shop_banner_pic']['name'])) {
     			$merchants_config['shop_banner_pic'] = shopguide_file_upload_info('shop_banner', 'shop_banner_pic', $shop_banner_pic);
     		}
-
     		
     		if (!empty($shop_description)) {
-    			$merchants_config['shop_description'] = $shop_description;// 店铺描述
+    			$merchants_config['shop_description'] = $shop_description;	//店铺描述
     		}
     		$time = array();
 
     		if (!empty($shop_trade_time)) {
-    			$shop_time       = explode(',',$shop_trade_time);
+    			$shop_time = explode(',', $shop_trade_time);
     			//营业时间验证
-    			if($shop_time[0] >= 1440) {
+    			if ($shop_time[0] >= 1440) {
     			    return $this->showmessage('营业开始时间不能为次日', ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_ERROR);
     			}
-    			if($shop_time[1] - $shop_time[0] > 1440) {
+    			if ($shop_time[1] - $shop_time[0] > 1440) {
     			    return $this->showmessage('营业时间最多为24小时', ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_ERROR);
     			}
-    			if(($shop_time[1] - $shop_time[0] == 1440) && ($shop_time[0] != 0)) {
+    			if (($shop_time[1] - $shop_time[0] == 1440) && ($shop_time[0] != 0)) {
     			    return $this->showmessage('24小时营业请选择0-24', ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_ERROR);
     			}
     			
@@ -252,11 +247,16 @@ class merchant extends ecjia_merchant {
 	            $time['end']     = $end_time;
 	            $shop_trade_time = serialize($time);
     			if ($shop_trade_time != get_merchant_config('shop_trade_time')) {
-    				$merchants_config['shop_trade_time'] = $shop_trade_time;// 营业时间
+    				$merchants_config['shop_trade_time'] = $shop_trade_time;	//营业时间
     			}
     		}
+    		
+    		if (!empty($shop_kf_mobile)){
+    			$merchants_config['shop_kf_mobile'] = $shop_kf_mobile;	//客服电话
+    		}
+    		
     		if (!empty($shop_notice)) {
-    			$merchants_config['shop_notice'] = $shop_notice;// 店铺公告
+    			$merchants_config['shop_notice'] = $shop_notice;	//店铺公告
     		}
     		if (!empty($merchants_config)) {
     			$merchant = set_merchant_config('', '', $merchants_config);
@@ -336,7 +336,8 @@ class merchant extends ecjia_merchant {
     			'store_hot'             => $is_hot,
     			'add_time'              => RC_Time::gmtime(),
     			'review_status'         => 5,
-    			'store_id'				=> $_SESSION['store_id']
+    			'store_id'				=> $_SESSION['store_id'],
+    			'sort_order'			=> 0
     		);
     		if (empty($goods_id)) {
     			$goods_id = RC_DB::table('goods')->insertGetId($data);

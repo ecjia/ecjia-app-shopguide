@@ -179,17 +179,17 @@
 				
 				<div class="control-group">
 					<a class="btn data-pjax" href="{RC_Uri::url('shopguide/admin/init')}&step=2&type=prev{if $cat_id}&cat_id={$cat_id}{/if}{if $store_cat_id}&store_cat_id={$store_cat_id}{/if}">上一步</a>
-					<a class="btn btn-gebo m_l10" href="{RC_Uri::url('shopguide/admin/init')}&step=4">跳过</a>
+					<input class="btn btn-gebo m_l10" type="submit" value="跳过" />
 					<input class="btn btn-gebo m_l10" type="submit" value="{lang key='shopguide::shopguide.next_step'}" />
 				</div>
 			</fieldset>
 			<!-- {elseif $smarty.get.step eq '4'} -->
 			<div class="step_three step">
-				<div class="shopguide-complete" style="width:60%;margin: 0 auto;">
+				<div class="shopguide-complete">
 					<div class="complete-header t_c">
 						<img src="{$app_url}/complete.png" />
 						<div class="complete-notice">恭喜您！网店可以使用了！</div>
-						<a class="step-li" href="{RC_Uri::url('@index/init')}" style="margin:0;">完成向导</a>
+						<a class="step-li m_0" href="{RC_Uri::url('@index/init')}">完成向导</a>
 						<div class="complete-title">以下是部分常用功能的链接，您关闭本页面后，依然可以在左侧菜单中找到</div>
 					</div>
 					<ul class="complete-bottom">

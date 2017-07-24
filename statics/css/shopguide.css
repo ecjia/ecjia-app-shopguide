@@ -49,6 +49,10 @@
 	position: relative;
 }
 
+.step .step-li.m_0 {
+	margin: 0;
+}
+
 .step .step-li.color_fff {
 	color: #333;
 	background-color: #fff;
@@ -92,7 +96,7 @@
     margin-bottom: 0;
 }
 
-.complete-li {
+a.complete-li {
     list-style: none;
     width: 31.3333%;
     display: inline-block;
@@ -109,11 +113,6 @@
 	width: 25px;
     height: 25px;
     padding-right: 10px;
-}
-
-.complete-li a:hover, .complete-li a:link, .complete-li a:active, .complete-li a:visited {
-	text-decoration: none;
-	color: #333;
 }
 
 .complete-li:nth-child(3n) {
@@ -148,4 +147,9 @@
 
 .image-content .shop-logo img {
 	background-color: #eee;
+}
+
+.shopguide-complete {
+	width: 60%;
+	margin: 0 auto;
 }
