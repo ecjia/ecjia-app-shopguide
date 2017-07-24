@@ -89,7 +89,7 @@
                                 <textarea class="form-control required" name="shop_notice">{$data.shop_notice}</textarea>
                             </div>
                             <span class="input-must">
-                                <span id="email-error" class="require-field error" style="color:#FF0000,">*</span>
+                                <span class="input-must">*</span>
                             </span>
                         </div>
 
@@ -99,7 +99,7 @@
                                 <textarea class="form-control required" name="shop_description">{$data.shop_description}</textarea>
                             </div>
                             <span class="input-must">
-                                <span id="email-error" class="require-field error" style="color:#FF0000,">*</span>
+                                <span class="input-must">*</span>
                             </span>
                         </div>
 						
@@ -245,7 +245,7 @@
 				    	<ul class="step-ul">
 							<!-- {foreach from=$shipping_list item=val} -->
 							<a target="__blank" href="{RC_Uri::url('shipping/mh_area/init')}&shipping_id={$val.id}&code={$val.code}">
-								<li class="step-li color_fff">{$val.name}<image class="check" src="{$app_url}/check.png" /></li>
+								<li class="step-li color_fff">{$val.name}<image class="check" src="{$app_url}/mh-check.png" /></li>
 							</a>
 							<!-- {/foreach} -->
 							<a target="__blank" href="{RC_Uri::url('shipping/merchant/init')}"><li class="step-li">安装配送方式</li></a>
@@ -267,7 +267,7 @@
 							<div class="complete-header t_c">
 								<img src="{$app_url}/mh-complete.png" />
 								<div class="complete-notice">恭喜您！网店可以使用了！</div>
-								<a class="step-li" href="{RC_Uri::url('@index/init')}" style="margin:0;">完成向导</a>
+								<a class="step-li" href="{RC_Uri::url('merchant/dashboard/init')}" style="margin:0;">完成向导</a>
 								<div class="complete-title">以下是部分常用功能的链接，您关闭本页面后，依然可以在左侧菜单中找到</div>
 							</div>
 							<ul class="complete-bottom">
