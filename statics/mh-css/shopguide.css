@@ -182,56 +182,6 @@
 	margin-right: 0;
 }
 
-.shop-logo-content {
-	position: absolute;
-    width: 240px;
-    height: 400px;
-    left: 700px;
-    top: 25px;
-    text-align: center;
-	z-index: 2;
-}
-
-.shop-logo-content .text {
-	color: #838383;
-	line-height: 50px;
-}
-
-.image-content {
-   	height: 205px;
-	text-align: center;
-}
-
-.image-content .text {
-	color: #838383;
-	line-height: 50px;
-}
-
-.image-content .shop_banner_pic, .shop-logo-content .shop_logo {
-	background-image: url("../images/shop-logo.png");
-	background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-	width: 240px;
-    height: 205px;
-	display: block;
-	padding: 0;
-	cursor: pointer;
-	float: left;
-}
-
-.image-content .shop_banner_pic img, .shop-logo-content .shop_logo img {
-	background-color: #eee;
-	width: 100%;
-    height: 100%;
-}
-
-.image-content.fileupload .btn {
-	float: left;
-    margin-left: 10px;
-    margin-top: 175px;
-}
-
 .goods-cat-container {
 	width: 93%;
 	margin: 0 auto;

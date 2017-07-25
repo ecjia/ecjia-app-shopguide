@@ -113,6 +113,9 @@ class merchant extends ecjia_merchant {
 		
 		$goods_id= isset($_GET['goods_id']) ? intval($_GET['goods_id']) : 0;
 		$goods_info = RC_DB::table('goods')->where('goods_id', $goods_id)->where('store_id', $_SESSION['store_id'])->first();
+		if (!empty($goods_info['goods_img'])) {
+			$goods_info['goods_img'] = goods_imageutils::getAbsoluteUrl($goods_info['goods_img']);
+		}
 		$cat_info = RC_DB::table('category')->where('cat_id', $goods_info['cat_id'])->first();
 		$cat_info['level'] = 0;
 		if ($cat_info['parent_id'] != 0) {
@@ -172,10 +175,14 @@ class merchant extends ecjia_merchant {
 			$this->assign('shipping_list', $enabled_modules);
 		}
 		
-		$merchant_info['merchants_name'] = RC_DB::table('store_franchisee')->where('store_id', $_SESSION['store_id'])->pluck('merchants_name');
 		$s_time = 480;
 		$e_time = 1260;
 		$merchant_info['shop_time_value'] = $s_time.",".$e_time;
+		
+		if ($type == 'prev') {
+			$merchant_info = get_merchant_info();
+		}
+		$merchant_info['merchants_name'] = RC_DB::table('store_franchisee')->where('store_id', $_SESSION['store_id'])->pluck('merchants_name');
 		
 		$this->assign('data', $merchant_info);
 		$this->assign('step', $step);
@@ -198,13 +205,6 @@ class merchant extends ecjia_merchant {
     		$shop_notice            = ($_POST['shop_notice'] == get_merchant_config('shop_notice'))             ? '' : htmlspecialchars($_POST['shop_notice']);
     		
     		$merchant_config = array();
-
-    		//如果没有上传店铺LOGO 提示上传店铺LOGO
-    		$shop_logo = get_merchant_config('shop_logo');
-    		if (empty($shop_logo) && empty($merchants_config['shop_logo'])) {
-    			return $this->showmessage('请上传店铺LOGO', ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_ERROR);
-    		}
-    		
     		//默认店铺页头部LOGO
     		if (!empty($_FILES['shop_logo']) && empty($_FILES['error']) && !empty($_FILES['shop_logo']['name'])) {
     			$merchants_config['shop_logo'] = shopguide_file_upload_info('shop_logo', '', $shop_logo);
@@ -291,6 +291,7 @@ class merchant extends ecjia_merchant {
     		$upload->add_saving_callback(function ($file, $filename) {
     			return true;
     		});
+
     		/* 是否处理商品图 */
     		$proc_goods_img = true;
     		if (isset($_FILES['goods_img'])) {
@@ -375,6 +376,48 @@ class merchant extends ecjia_merchant {
     
     	$cat_list = RC_DB::table('category')->where('parent_id', $cat_id)->where('is_show', 1)->get();
     	return $this->showmessage('', ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_SUCCESS, array('content' => $cat_list));
+    }
+    
+    /**
+     * 店铺基本信息
+     */
+    public function drop_file(){
+    	$code = $_GET['code'];
+    	if ($code == 'goods_img') {
+    		$goods_id = !empty($_GET['goods_id']) ? intval($_GET['goods_id']) : 0;
+    		
+    		$data = RC_DB::table('goods')->select('goods_img', 'goods_thumb', 'original_img', 'goods_name')->where('store_id', $_SESSION['store_id'])->where('goods_id', $goods_id)->first();
+    		if (!empty($data)) {
+    			if (!empty($row ['goods_img'])) {
+    				$disk->delete(RC_Upload::upload_path() . $row['goods_img']);
+    			}
+    			if (!empty($row['goods_thumb'])) {
+    				$disk->delete(RC_Upload::upload_path() . $row['goods_thumb']);
+    			}
+    			if (!empty($row['original_img'])) {
+    				strrpos($row['original_img'], '?') && $row['original_img'] = substr($row['original_img'], 0, strrpos($row['original_img'], '?'));
+    				$disk->delete(RC_Upload::upload_path() . $row['original_img']);
+    			}   				
+    		}
+    		RC_DB::table('goods')->where('store_id', $_SESSION['store_id'])->where('goods_id', $goods_id)->update(array('goods_img' => '', 'goods_thumb' => '', 'original_img' => ''));
+    		ecjia_merchant::admin_log($data['goods_name'], 'eidt', 'goods');
+    		return $this->showmessage('成功删除', ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_SUCCESS);
+    	}
+    	$img = get_merchant_config($code);
+    	$merchant = set_merchant_config($code, '');
+    	$file = !empty($img)? RC_Upload::upload_path($img) : '';
+    	$disk = RC_Filesystem::disk();
+    	$disk->delete($file);
+    	if($code == 'shop_nav_background'){
+    		$msg = '店铺导航背景图';
+    	}elseif($code == 'shop_logo'){
+    		$msg = '店铺LOGO';
+    	}elseif($code == 'shop_banner_pic'){
+    		$msg = 'APP Banner图';
+    	}
+    	// 记录日志
+    	ecjia_merchant::admin_log('删除'.$msg, 'edit', 'merchant');
+    	return $this->showmessage('成功删除', ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_SUCCESS);
     }
 }
 

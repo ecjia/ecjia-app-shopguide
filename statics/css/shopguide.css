@@ -20,6 +20,10 @@
 	margin-left: 0;
 }
 
+.form-horizontal .control-group {
+	margin-top: 20px;
+}
+
 .step {
 	background-color: #fff;
 	border: none;

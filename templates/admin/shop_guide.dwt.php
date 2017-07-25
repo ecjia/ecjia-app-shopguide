@@ -150,25 +150,8 @@
 				<ul class="step-ul">
 					<!-- {foreach from=$payment_list item=val} -->
 					<a target="__blank" href="{RC_Uri::url('payment/admin/edit')}&code={$val.pay_code}">
-						<li class="step-li color_fff {if $val.pay_code eq 'pay_alipay' || $val.pay_code eq 'pay_wxpay' || $val.pay_code eq 'pay_balance' || $val.pay_code eq 'pay_cod' || $val.pay_code eq 'pay_union'}pd_0{/if}">
-							{if $val.pay_code eq 'pay_alipay'}
-							<image src="{$app_url}/alipay.png" />
-							{/if}
-							{if $val.pay_code eq 'pay_wxpay'}
-							<image src="{$app_url}/wxpay.png" />
-							{/if}
-							{if $val.pay_code eq 'pay_balance'}
-							<image src="{$app_url}/balance.png" />
-							{/if}
-							{if $val.pay_code eq 'pay_cod'}
-							<image src="{$app_url}/cash.png" />
-							{/if}
-							{if $val.pay_code eq 'pay_union'}
-							<image src="{$app_url}/union.png" />
-							{/if}
-							{if $val.pay_code neq 'pay_alipay' && $val.pay_code neq 'pay_wxpay' && $val.pay_code neq 'pay_balance' && $val.pay_code neq 'pay_cod' && $val.pay_code neq 'pay_union'}
+						<li class="step-li color_fff">
 							{$val.pay_name}
-							{/if}
 							{if $val.checked eq 1}<image class="check" src="{$app_url}/check.png" />{/if}
 						</li>
 					</a>
