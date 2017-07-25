@@ -337,7 +337,7 @@ class merchant extends ecjia_merchant {
     			'add_time'              => RC_Time::gmtime(),
     			'review_status'         => 5,
     			'store_id'				=> $_SESSION['store_id'],
-    			'sort_order'			=> 0
+    			'store_sort_order'		=> 0
     		);
     		if (empty($goods_id)) {
     			$goods_id = RC_DB::table('goods')->insertGetId($data);
