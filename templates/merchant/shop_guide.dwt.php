@@ -214,7 +214,7 @@
 						<span class="input-must">{lang key='system::system.require_field'}</span>
 					</div>
 					<div class="form-group">
-						<label class="control-label col-lg-3">商品图片：<span class="help-block">推荐图片的尺寸为：800，点击选择图片按钮进行上传</span></label>
+						<label class="control-label col-lg-3">商品图片：<span class="help-block">推荐图片的尺寸为：800，点击浏览按钮进行上传</span></label>
 						<div class="col-lg-6">
 							<div class="fileupload fileupload-{if $goods_info.goods_img}exists{else}new{/if}" data-provides="fileupload">
 								{if $goods_info.goods_img}
