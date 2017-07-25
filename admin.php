@@ -164,31 +164,14 @@ class admin extends ecjia_admin {
 		
 		if ($step == 3) {
 			$shipping_list = RC_DB::table('shipping')
-				->where(RC_DB::raw('enabled'), 1)
-				->select('shipping_id', 'shipping_name', 'shipping_code')
+				->select('shipping_id', 'shipping_name', 'shipping_code', 'enabled')
 				->get();
 			if (!empty($shipping_list)) {
-				foreach ($shipping_list as $k => $v) {
-					$shipping_area = RC_DB::table('shipping_area')->where('shipping_id', $v['shipping_id'])->get();
-					if (!empty($shipping_area)) {
-						$shipping_list[$k]['area_exist'] = 1;
-					} else {
-						$shipping_list[$k]['area_exist'] = 0;
-					}
-				}
 				$this->assign('shipping_list', $shipping_list);
 			}
 			
-			$payment_list = RC_DB::table('payment')->where('enabled', 1)->get();
+			$payment_list = RC_DB::table('payment')->get();
 			if (!empty($payment_list)) {
-				foreach ($payment_list as $k => $v) {
-					$pay_config = unserialize($v['pay_config']);
-					if (!empty($pay_config)) {
-						$payment_list[$k]['checked'] = 1;
-					} else {
-						$payment_list[$k]['checked'] = 0;
-					}
-				}
 				$this->assign('payment_list', $payment_list);
 			}
 		}

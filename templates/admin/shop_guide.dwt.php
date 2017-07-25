@@ -138,7 +138,7 @@
 					<!-- {foreach from=$shipping_list item=val} -->
 					<a target="__blank" href="{RC_Uri::url('shipping/admin_area_plugin/init')}&shipping_id={$val.shipping_id}&code={$val.shipping_code}">
 						<li class="step-li color_fff">{$val.shipping_name}
-							{if $val.area_exist eq 1}<image class="check" src="{$app_url}/check.png" />{/if}
+							{if $val.enabled eq 1}<image class="check" src="{$app_url}/check.png" />{/if}
 						</li>
 					</a>
 					<!-- {/foreach} -->
@@ -152,7 +152,7 @@
 					<a target="__blank" href="{RC_Uri::url('payment/admin/edit')}&code={$val.pay_code}">
 						<li class="step-li color_fff">
 							{$val.pay_name}
-							{if $val.checked eq 1}<image class="check" src="{$app_url}/check.png" />{/if}
+							{if $val.enabled eq 1}<image class="check" src="{$app_url}/check.png" />{/if}
 						</li>
 					</a>
 					<!-- {/foreach} -->
