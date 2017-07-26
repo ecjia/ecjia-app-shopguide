@@ -124,23 +124,21 @@ class admin extends ecjia_admin {
 		$data['shop_name']		= ecjia::config('shop_name');
 		$data['shop_title'] 	= ecjia::config('shop_title');
 		
-		if ($type == 'prev') {
-			$data['shop_country'] 	= ecjia::config('shop_country');
-			$data['shop_province'] 	= ecjia::config('shop_province');
-			$data['shop_city'] 		= ecjia::config('shop_city');
-			$data['shop_address'] 	= ecjia::config('shop_address');
-			
-			$data['company_name'] 	= ecjia::config('company_name');
-			$data['service_phone'] 	= ecjia::config('service_phone');
-			
-			$data['qq'] 			= ecjia::config('qq');
-			$data['ym'] 			= ecjia::config('ym');
-			$data['msn'] 			= ecjia::config('msn');
-			$data['service_email'] 	= ecjia::config('service_email');
-			$data['shop_logo']		= ecjia::config('shop_logo');
-			if (!empty($data['shop_logo'])) {
-				$data['shop_logo'] = RC_Upload::upload_url().'/'.$data['shop_logo'];
-			}
+		$data['shop_country'] 	= ecjia::config('shop_country');
+		$data['shop_province'] 	= ecjia::config('shop_province');
+		$data['shop_city'] 		= ecjia::config('shop_city');
+		$data['shop_address'] 	= ecjia::config('shop_address');
+		
+		$data['company_name'] 	= ecjia::config('company_name');
+		$data['service_phone'] 	= ecjia::config('service_phone');
+		
+		$data['qq'] 			= ecjia::config('qq');
+		$data['ym'] 			= ecjia::config('ym');
+		$data['msn'] 			= ecjia::config('msn');
+		$data['service_email'] 	= ecjia::config('service_email');
+		$data['shop_logo']		= ecjia::config('shop_logo');
+		if (!empty($data['shop_logo'])) {
+			$data['shop_logo'] = RC_Upload::upload_url().'/'.$data['shop_logo'];
 		}
 		
     	$this->assign('countries', $this->db_region->get_regions());
