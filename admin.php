@@ -285,7 +285,7 @@ class admin extends ecjia_admin {
     		}
     		$store_count = RC_DB::table('store_category')->where('cat_name', $store_cat)->where('parent_id', 0)->where('cat_id', '!=', $store_cat_id)->count();
     		if ($store_count > 0) {
-    			return $this->showmessage(RC_Lang::get('shopguide::shopguide.store_count_exist'), ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_ERROR);
+    			return $this->showmessage(RC_Lang::get('shopguide::shopguide.store_cat_exist'), ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_ERROR);
     		}
     		
     		if (!empty($cat_id)) {
