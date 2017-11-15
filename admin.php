@@ -141,11 +141,20 @@ class admin extends ecjia_admin {
 			$data['shop_logo'] = RC_Upload::upload_url().'/'.$data['shop_logo'];
 		}
 		
-    	$this->assign('countries', $this->db_region->get_regions());
-		if ($data['shop_country'] > 0) {
-			$this->assign('provinces', $this->db_region->get_regions(1, $data['shop_country']));
+    	//$this->assign('countries', $this->db_region->get_regions());
+		$countries = with(new Ecjia\App\Setting\Country)->getCountries();
+		
+		$this->assign('countries', $countries);
+		
+		if (!empty($data['shop_country'])) {
+			//$this->assign('provinces', $this->db_region->get_regions(1, $data['shop_country']));
+			$provinces = with(new Ecjia\App\Setting\Region)->getSubarea($data['shop_country']);
+			$this->assign('provinces', $provinces);
+			
 			if ($data['shop_province']) {
-				$this->assign('cities', $this->db_region->get_regions(2, $data['shop_province']));
+				//$this->assign('cities', $this->db_region->get_regions(2, $data['shop_province']));
+				$cities = with(new Ecjia\App\Setting\Region)->getSubarea($data['shop_province']);
+				$this->assign('cities', $cities);
 			}
 		}
 		
@@ -189,9 +198,9 @@ class admin extends ecjia_admin {
     	if ($step == 1) {
     		$shop_name 		= empty($_POST['shop_name']) 		? '' : $_POST['shop_name'];
     		$shop_title 	= empty($_POST['shop_title']) 		? '' : $_POST['shop_title'];
-    		$shop_country 	= empty($_POST['shop_country']) 	? '' : intval($_POST['shop_country']);
-    		$shop_province 	= empty($_POST['shop_province']) 	? '' : intval($_POST['shop_province']);
-    		$shop_city 		= empty($_POST['shop_city']) 		? '' : intval($_POST['shop_city']);
+    		$shop_country 	= empty($_POST['shop_country']) 	? '' : trim($_POST['shop_country']);
+    		$shop_province 	= empty($_POST['shop_province']) 	? '' : trim($_POST['shop_province']);
+    		$shop_city 		= empty($_POST['shop_city']) 		? '' : trim($_POST['shop_city']);
     		$shop_address 	= empty($_POST['shop_address']) 	? '' : $_POST['shop_address'];
     		$company_name	= empty($_POST['company_name']) 	? '' : $_POST['company_name'];
     		$service_phone  = empty($_POST['service_phone'])	? '' : $_POST['service_phone'];
