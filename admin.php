@@ -51,29 +51,11 @@ defined('IN_ECJIA') or exit('No permission resources.');
  * @author royalwang
  */
 class admin extends ecjia_admin {
-	private $db_shipping;
-	private $db_shipping_area;
-	private $db_shipping_area_region;
-	private $db_payment;
-
-	private $db_category;
-	private $db_brand;
-	private $db_goods;
-	
 	public function __construct() {
 		parent::__construct();
 		
 		RC_Loader::load_app_class('shipping_factory', 'shipping', false);
 		RC_Loader::load_app_class('goods_image_data', 'goods', false);
-		
-		$this->db_shipping 				= RC_Loader::load_app_model('shipping_model', 'shipping');
-		$this->db_shipping_area 		= RC_Loader::load_app_model('shipping_area_model', 'shipping');
-		$this->db_shipping_area_region 	= RC_Loader::load_app_model('shipping_area_region_model', 'shipping');
-		$this->db_payment 				= RC_Loader::load_app_model('payment_model', 'payment');
-		
-		$this->db_category 		= RC_Loader::load_app_model('category_model', 'goods');
-		$this->db_brand 		= RC_Loader::load_app_model('brand_model', 'goods');
-		$this->db_goods 		= RC_Loader::load_app_model('goods_model', 'goods');
 		
 		RC_Loader::load_app_func('global', 'goods');
 		RC_Loader::load_app_func('global', 'shopguide');
