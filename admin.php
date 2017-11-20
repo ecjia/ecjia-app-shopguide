@@ -51,7 +51,6 @@ defined('IN_ECJIA') or exit('No permission resources.');
  * @author royalwang
  */
 class admin extends ecjia_admin {
-	private $db_region;
 	private $db_shipping;
 	private $db_shipping_area;
 	private $db_shipping_area_region;
@@ -67,7 +66,6 @@ class admin extends ecjia_admin {
 		RC_Loader::load_app_class('shipping_factory', 'shipping', false);
 		RC_Loader::load_app_class('goods_image_data', 'goods', false);
 		
-		$this->db_region 				= RC_Loader::load_model('region_model');
 		$this->db_shipping 				= RC_Loader::load_app_model('shipping_model', 'shipping');
 		$this->db_shipping_area 		= RC_Loader::load_app_model('shipping_area_model', 'shipping');
 		$this->db_shipping_area_region 	= RC_Loader::load_app_model('shipping_area_region_model', 'shipping');
@@ -141,19 +139,15 @@ class admin extends ecjia_admin {
 			$data['shop_logo'] = RC_Upload::upload_url().'/'.$data['shop_logo'];
 		}
 		
-    	//$this->assign('countries', $this->db_region->get_regions());
 		$countries = with(new Ecjia\App\Setting\Country)->getCountries();
-		
 		$this->assign('countries', $countries);
 		
 		if (!empty($data['shop_country'])) {
-			//$this->assign('provinces', $this->db_region->get_regions(1, $data['shop_country']));
-			$provinces = with(new Ecjia\App\Setting\Region)->getSubarea($data['shop_country']);
+			$provinces = ecjia_region::getSubarea($data('shop_country'));
 			$this->assign('provinces', $provinces);
 			
 			if ($data['shop_province']) {
-				//$this->assign('cities', $this->db_region->get_regions(2, $data['shop_province']));
-				$cities = with(new Ecjia\App\Setting\Region)->getSubarea($data['shop_province']);
+				$cities = ecjia_region::getSubarea($data['shop_province']);
 				$this->assign('cities', $cities);
 			}
 		}

@@ -187,12 +187,4 @@ function set_merchant_config($code = '', $value = '', $arr = ''){
     }
 }
 
-/*
- * 获取地区名称
- */
-function get_region_name($id){
-    $db_region = RC_Model::model('merchant/region_model');
-    return $db_region->where(array('region_id' => $id))->get_field('region_name');
-}
-
 // end

@@ -51,12 +51,8 @@ defined('IN_ECJIA') or exit('No permission resources.');
  * @author wutifang
  */
 class merchant extends ecjia_merchant {
-	private $db_region;
-	
 	public function __construct() {
 		parent::__construct();
-		
-		$this->db_region = RC_Loader::load_model('region_model');
 		
 		RC_Style::enqueue_style('jquery-stepy');
 		RC_Script::enqueue_script('jquery-validate');
