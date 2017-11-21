@@ -123,9 +123,8 @@ class admin extends ecjia_admin {
 		
 		$countries = with(new Ecjia\App\Setting\Country)->getCountries();
 		$this->assign('countries', $countries);
-		
 		if (!empty($data['shop_country'])) {
-			$provinces = ecjia_region::getSubarea($data('shop_country'));
+			$provinces = ecjia_region::getSubarea($data['shop_country']);
 			$this->assign('provinces', $provinces);
 			
 			if ($data['shop_province']) {
