@@ -54,7 +54,6 @@ class admin extends ecjia_admin {
 	public function __construct() {
 		parent::__construct();
 		
-		RC_Loader::load_app_class('shipping_factory', 'shipping', false);
 		RC_Loader::load_app_class('goods_image_data', 'goods', false);
 		
 		RC_Loader::load_app_func('global', 'goods');

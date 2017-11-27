@@ -81,8 +81,6 @@ class merchant extends ecjia_merchant {
 		RC_Loader::load_app_class('goods', 'goods', false);
 		RC_Loader::load_app_class('goods_image_data', 'goods', false);
 		RC_Loader::load_app_class('goods_imageutils', 'goods', false);
-		
-		RC_Loader::load_app_class('shipping_factory', 'shipping', false);
 	}
 	
     public function init() {
@@ -157,8 +155,8 @@ class merchant extends ecjia_merchant {
 					$enabled_modules[$_key]['enabled'] 			= $_value['enabled'];
 						
 					/* 判断该派送方式是否支持保价 支持报价的允许在页面修改保价费 */
-					$shipping_handle = new shipping_factory($_value['shipping_code']);
-					$config          = $shipping_handle->configure_config();
+					$shipping_handle = ecjia_shipping::channel($_value['shipping_code']);
+					$config          = $shipping_handle->getConfig();
 			
 					/* 只能根据配置判断是否支持保价  只有配置项明确说明不支持保价，才是不支持*/
 					if (isset($config['insure']) && ($config['insure'] === false)) {
