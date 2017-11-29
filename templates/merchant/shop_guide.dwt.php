@@ -283,8 +283,8 @@
 							<div class="template-head">
 								<div class="head-left">{$list.shipping_area_name}</div>
 								<div class="head-right">
-									<a target="__blank" href='{RC_Uri::url("express/merchant/edit_shipping_template")}&template_name={$list.shipping_area_name}'>查看详情</a> &nbsp;|&nbsp;
-									<a data-toggle="ajaxremove" class="ajaxremove ecjiafc-red" data-msg="您确定要删除该运费模板吗？" href='{RC_Uri::url("express/merchant/remove_shipping_template", "name={$list.shipping_area_name}")}' title="{lang key='system::system.drop'}">删除</a>
+									<a target="__blank" href='{RC_Uri::url("shipping/mh_shipping/edit_shipping_template")}&template_name={$list.shipping_area_name}'>查看详情</a> &nbsp;|&nbsp;
+									<a data-toggle="ajaxremove" class="ajaxremove ecjiafc-red" data-msg="您确定要删除该运费模板吗？" href='{RC_Uri::url("shipping/mh_shipping/remove_shipping_template", "name={$list.shipping_area_name}")}' title="{lang key='system::system.drop'}">删除</a>
 								</div>
 							</div>
 							<div class="template-content">
@@ -303,7 +303,7 @@
 							</div>
 						</div>
 						<!-- {/foreach} -->
-						<a target="__blank" href="{RC_Uri::url('express/merchant/add_shipping_template')}">
+						<a target="__blank" href="{RC_Uri::url('shipping/mh_shipping/add_shipping_template')}">
 						<li class="step-li">添加运费模板</li>
 						</a>
 					</ul>
