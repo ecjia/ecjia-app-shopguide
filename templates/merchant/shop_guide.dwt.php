@@ -340,7 +340,7 @@
 							<a class="complete-li" href="{RC_Uri::url('favourable/merchant/add')}"><img src="{$app_url}/add-favourable.png">{lang key='shopguide::shopguide.add_favourable'}</a>
 							<a class="complete-li" href="{RC_Uri::url('staff/mh_profile/init')}"><img src="{$app_url}/mail-setting.png">个人设置</a>
 							<a class="complete-li" href="{RC_Uri::url('merchant/merchant/init')}"><img src="{$app_url}/store-setting.png">店铺设置</a>
-							<a class="complete-li" href="{RC_Uri::url('shipping/merchant/init')}"><img src="{$app_url}/add-user.png">设置配送方式</a>
+							<a class="complete-li" href="{RC_Uri::url('shipping/mh_shipping/add_shipping_template')}"><img src="{$app_url}/add-user.png">添加运费模板</a>
 						</ul>
 					</div>
 				</div>
