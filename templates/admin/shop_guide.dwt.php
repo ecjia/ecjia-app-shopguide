@@ -27,7 +27,7 @@
             <fieldset class="step_one step">
             	<h2>地区管理</h2>
             	<div class="control-group m_t10 ecjiaf-pr">
-            		<label>地区同步：<span class="color_838383">点以下按钮可获取四级地区信息到本地，请务必先同步地区，才可进行其他操作。</span></label>
+            		<label>地区同步：<span class="color_838383">点以下按钮可获取四级地区信息到本地。<br/>请务必先同步地区，才可进行其他操作。</span></label>
             		<div class="controls"><button class="get_region_info btn m_t5" data-msg="你确定执行此操作吗？" data-url='{RC_Uri::url("shopguide/admin/get_regioninfo")}' data-value="get_regioninfo">{t}同步地区表信息{/t}</button></div>
             	</div>
             	
