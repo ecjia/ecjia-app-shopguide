@@ -314,6 +314,73 @@ class admin extends ecjia_admin {
     	ecjia_config::instance()->write_config('shop_logo', '');
     	return $this->showmessage('删除成功', ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_SUCCESS);
     }
+    
+    /**
+     * 获取地区信息
+     */
+    public function get_regioninfo() {
+    	$this->admin_priv('region_manage', ecjia::MSGTYPE_JSON);
+    	
+    	//本地当前版本和检测时间
+    	$region_cn_version = ecjia::config('region_cn_version');
+    	$region_last_checktime = ecjia::config('region_last_checktime');
+    	$time = RC_Time::gmtime();
+    	$time_last_format = RC_Time::local_date(ecjia::config('time_format'), $region_last_checktime);
+    
+    	//同步检测时间间隔不能小于7天
+    	if ($time - $region_last_checktime < 7*24*60*60) {
+    		//更新检测时间
+    		ecjia_config::instance()->write_config('region_last_checktime', $time);
+    		$this->showmessage(__('当前版本已是最新版本，上次更新时间是（'.$time_last_format.'）'),ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_ERROR, array('pjaxurl' => RC_Uri::url('shopguide/admin/init')));
+    	}
+    
+    	$page = !empty($_GET['page']) ? intval($_GET['page']) + 1 : 1;
+    	$params = array(
+    		'pagination' => array('page' => $page, 'count' => 1500),
+    		'region_cn_version' => $region_cn_version,
+    	);
+    
+    	//获取ecjia_cloud对象
+    	$cloud = ecjia_cloud::instance()->api('region/synchrony')->data($params)->run();
+    	//判断是否有错误返回
+    	if (is_ecjia_error($cloud->getError())) {
+    		$this->showmessage($cloud->getError()->get_error_message(), ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_ERROR, array('pjaxurl' => RC_Uri::url('shopguide/admin/init')));
+    	}
+    
+    	//获取每页可更新数
+    	$data = $cloud->getReturnData();
+    
+    	//获取分页信息
+    	$pageinfo = $cloud->getPaginated();
+    
+    	if (!empty($data['last_regions'])) {
+    		$region_cn_version_new = $data['region_cn_version'];
+    		if ($pageinfo['more'] == 1) {
+    			$count = count($data['last_regions'])*$page;
+    		} else{
+    			$count = count($data['last_regions'])*($page -1) +  count($data['last_regions']);
+    		}
+    		$update_data = $data['last_regions'];
+    			
+    		//首次先清空本地地区表
+    		$first_page = intval($_GET['page']);
+    		if ($first_page == 0) {
+    			RC_DB::table('regions')->where('country', 'CN')->delete();
+    		}
+    			
+    		//批量插入
+    		RC_DB::table('regions')->insert($update_data);
+    	}
+    
+    	if ($pageinfo['more'] > 0) {
+    		return $this->showmessage(sprintf(RC_Lang::get('shopguide::shopguide.get_region_already'), $count), ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_SUCCESS, array('url' => RC_Uri::url("shopguide/admin/get_regioninfo"), 'notice' => 1, 'page' => $page, 'more' => $pageinfo['more']));
+    	} else {
+    		//更新地区表最后检查日期和本地版本
+    		ecjia_config::instance()->write_config('region_last_checktime', RC_Time::gmtime());
+    		ecjia_config::instance()->write_config('region_cn_version', $region_cn_version_new);
+    		return $this->showmessage(RC_Lang::get('shopguide::shopguide.get_regioninfo_success'), ecjia::MSGTYPE_JSON | ecjia::MSGSTAT_SUCCESS, array('pjaxurl' => RC_Uri::url('shopguide/admin/init')));
+    	}
+    }
 }
 
 // end
