@@ -25,6 +25,12 @@
         <form class="stepy-wizzard form-horizontal application-installer" id="validate_wizard" action="{url path='shopguide/admin/step_post'}{if $smarty.get.step}&step={$smarty.get.step}{/if}" method="post" name="theForm">
             <!-- {if !$smarty.get.step || $smarty.get.step eq '1'} -->
             <fieldset class="step_one step">
+            	<h2>地区管理</h2>
+            	<div class="control-group m_t10 ecjiaf-pr">
+            		<label>地区同步：<span class="color_838383">点以下按钮可获取四级地区信息到本地。<br/>请务必先同步地区，才可进行其他操作。</span></label>
+            		<div class="controls"><button class="get_region_info btn m_t5" data-msg="你确定执行此操作吗？" data-url='{RC_Uri::url("shopguide/admin/get_regioninfo")}' data-value="get_regioninfo">{t}同步地区表信息{/t}</button></div>
+            	</div>
+            	
                 <h2>基本信息</h2>
                 <div class="control-group m_t10 ecjiaf-pr">
 					<label>{lang key='shopguide::shopguide.label_shop_name'}</label>
@@ -54,14 +60,14 @@
 				<div class="control-group">
 					<label>所在地区</label>
 					<div>
-						<select class="w160" name="shop_country" id="selCountries" data-toggle="regionSummary" data-url="{RC_Uri::url('shopguide/region/init')}" data-type="1" data-target="region-summary-provinces">
+						<select class="w160" name="shop_country" id="selCountries" data-toggle="regionSummary" data-url="{RC_Uri::url('setting/region/init')}" data-target="region-summary-provinces">
 							<option value='0'>请选择国家...</option>
-							<!-- {foreach from=$countries item=region} -->
-							<option value="{$region.region_id}" {if $region.region_id eq $data.shop_country}selected{/if}>{$region.region_name}</option>
+							<!-- {foreach from=$countries key=key item=region} -->
+							<option value="{$key}" {if $key eq $ecjia_config.shop_country}selected{/if}>{$region}</option>
 							<!-- {/foreach} -->
 						</select>
 						<div class="f_l m_l17">
-							<select class="w160 region-summary-provinces" name="shop_province" id="selProvinces" data-toggle="regionSummary" data-type="2" data-target="region-summary-cities">
+							<select class="w160 region-summary-provinces" name="shop_province" id="selProvinces" data-toggle="regionSummary" data-target="region-summary-cities">
 								<option value='0'>请选择省份...</option>
 								<!-- {foreach from=$provinces item=region} -->
 								<option value="{$region.region_id}" {if $region.region_id eq $data.shop_province}selected{/if}>{$region.region_name}</option>
