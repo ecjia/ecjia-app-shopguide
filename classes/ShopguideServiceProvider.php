@@ -9,7 +9,7 @@ class ShopguideServiceProvider extends  AppParentServiceProvider
     
     public function boot()
     {
-        $this->package('ecjia/app-shopguide', null, dirname(__DIR__));
+        $this->package('ecjia/app-shopguide');
     }
     
     public function register()
