@@ -198,7 +198,7 @@
                         <a class="complete-li" href="{RC_Uri::url('weapp/admin/init')}"><img src="{$app_url}/weapp.png">小程序管理</a>
                         <a class="complete-li" href="{RC_Uri::url('setting/admin_region/init')}"><img src="{$app_url}/weapp.png">地区管理</a>
 
-						<a class="complete-li" href="{RC_Uri::url('withdraw/admin/init')}"><img src="{$app_url}/withdraw.png">提现管理</a>
+						<a class="complete-li" href="{RC_Uri::url('withdraw/admin_plugin/init')}"><img src="{$app_url}/withdraw.png">提现方式</a>
 						<a class="complete-li" href="{RC_Uri::url('sms/admin_plugin/init')}"><img src="{$app_url}/sms.png">短信渠道</a>
                         <a class="complete-li" href="{RC_Uri::url('cron/admin_plugin/init')}"><img src="{$app_url}/cron.png">计划任务</a>
 					</ul>
