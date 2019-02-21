@@ -44,22 +44,25 @@
 //
 //  ---------------------------------------------------------------------------------
 //
-defined('IN_ECJIA') or exit('No permission resources.');
 
 /**
- * 后台权限API
- * @author wutifang
+ * js语言包设置
  */
-class shopguide_admin_purview_api extends Component_Event_Api
-{
 
-    public function call(&$options)
-    {
-        $purviews = array(
-            array('action_name' => __('开店向导设置', 'shopguide'), 'action_code' => 'shopguide_setup', 'relevance' => ''),
-        );
-        return $purviews;
-    }
-}
+defined('IN_ECJIA') or exit('No permission resources.');
 
-// end
+return array(
+    //shopguide
+    'shopguide_page' =>array(
+        'next_step'           =>__('下一步', 'shopguide'),
+        'shop_name_required'  => __('请输入商店名称', 'shopguide'),
+        'area_name_required'  => __('请输入配送区域名称', 'shopguide'),
+        'goods_cat_required'  => __('请输入商品分类', 'shopguide'),
+        'goods_name_required' => __('请输入商品名称', 'shopguide'),
+        'store_cat_required'  => __('请输入店铺分类', 'shopguide'),
+        'pls_select'          => __('请选择...', 'shopguide'),
+
+    ),
+
+);
+//end
