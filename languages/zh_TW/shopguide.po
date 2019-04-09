@@ -5,14 +5,14 @@ msgstr ""
 "Project-Id-Version: Ecjia App shopguide 1.27.4\n"
 "Report-Msgid-Bugs-To: https://make.ecjia.com/polyglots/\n"
 "POT-Creation-Date: 2019-04-04 10:23+0800\n"
-"PO-Revision-Date: 2019-04-04 10:23+0800\n"
+"PO-Revision-Date: 2019-04-09 10:15+0800\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <ecjia@ecjia.com>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 2.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: admin.php:92 admin.php:94 admin.php:157
@@ -31,7 +31,7 @@ msgstr "請輸入商品分類"
 
 #: admin.php:256 configs/jslang.php:62
 msgid "请输入店铺分类"
-msgstr "請輸入商品分類"
+msgstr "請輸入店鋪分類"
 
 #: admin.php:261
 msgid "该商品分类名称已存在"
@@ -229,7 +229,7 @@ msgstr "請選擇省份..."
 
 #: content/apps/shopguide/templates/admin/shop_guide.dwt.php:80
 msgid "请选择城市..."
-msgstr "請選擇省份..."
+msgstr "請選擇城市..."
 
 #: content/apps/shopguide/templates/admin/shop_guide.dwt.php:89
 msgid "请输入详细地址"
@@ -241,7 +241,7 @@ msgstr "公司名稱："
 
 #: content/apps/shopguide/templates/admin/shop_guide.dwt.php:94
 msgid "请输入公司名称"
-msgstr "公司名稱："
+msgstr "請輸入公司名稱"
 
 #: content/apps/shopguide/templates/admin/shop_guide.dwt.php:98
 #: content/apps/shopguide/templates/merchant/shop_guide.dwt.php:104
@@ -349,7 +349,7 @@ msgstr "安裝支付方式"
 
 #: content/apps/shopguide/templates/admin/shop_guide.dwt.php:171
 msgid "温馨提示：支付方式安装完成后，请刷新此页面查看安装后效果。"
-msgstr "溫馨提示：支付方式安裝完成後，請刷新此頁面查看安裝後效果"
+msgstr "溫馨提示：支付方式安裝完成後，請刷新此頁面查看安裝後效果。"
 
 #: content/apps/shopguide/templates/admin/shop_guide.dwt.php:175
 #: content/apps/shopguide/templates/merchant/shop_guide.dwt.php:316
@@ -493,7 +493,7 @@ msgstr "店鋪公告："
 
 #: content/apps/shopguide/templates/merchant/shop_guide.dwt.php:119
 msgid "店铺简介："
-msgstr "店鋪公告："
+msgstr "店鋪簡介："
 
 #: content/apps/shopguide/templates/merchant/shop_guide.dwt.php:136
 msgid "选择平台商品分类"
@@ -513,7 +513,7 @@ msgstr "暫無內容"
 
 #: content/apps/shopguide/templates/merchant/shop_guide.dwt.php:210
 msgid "商品名称："
-msgstr "商品名稱"
+msgstr "商品名稱："
 
 #: content/apps/shopguide/templates/merchant/shop_guide.dwt.php:217
 msgid "商品图片："
